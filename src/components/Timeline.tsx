@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Post from "./Post";
 
 const Timeline: React.FC = () => {
