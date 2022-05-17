@@ -6,9 +6,6 @@ type PostProps = {
     hey: string,
 }
 const Post: React.VFC<PostProps> = (props) => {
-    useEffect(() => {
-        console.log(props);
-    }, []);
   return (
     <IonItem id={props.post_id}>
       <IonAvatar><img src={imgSrc}/></IonAvatar>

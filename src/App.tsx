@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, home, square, statsChart, triangle } from 'ionicons/icons';
+import { home, statsChart} from 'ionicons/icons';
 import Home from './pages/Home';
 import Stats from './pages/Stats';
 import Tab3 from './pages/Tab3';
