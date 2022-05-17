@@ -1,0 +1,7 @@
+{
+  "name": "continuation",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
