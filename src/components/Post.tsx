@@ -1,8 +1,16 @@
 import { IonAvatar, IonItem, IonLabel } from "@ionic/react";
+import { useEffect } from "react";
 import imgSrc from '../data/ava.png';
-const Post: React.FC = () => {
+type PostProps = {
+    post_id: string,
+    hey: string,
+}
+const Post: React.VFC<PostProps> = (props) => {
+    useEffect(() => {
+        console.log(props);
+    }, []);
   return (
-    <IonItem>
+    <IonItem id={props.post_id}>
       <IonAvatar><img src={imgSrc}/></IonAvatar>
       <IonLabel>
         <h2>Finn</h2>
