@@ -1,5 +1,6 @@
 import { IonAvatar, IonItem, IonLabel } from "@ionic/react";
 import imgSrc from '../data/ava.png';
+import React from 'react';
 type PostProps = {
     post_id: string,
     hey: string,

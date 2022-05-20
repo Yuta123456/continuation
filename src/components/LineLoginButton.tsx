@@ -1,10 +1,11 @@
 import CONFIG from '../const/config';
 import imgSrc from '../data/LINE_Login_Button_Image/Line_Login_Button_Image/images/DeskTop/2x/44dp/btn_login_base.png';
 import getRandomString from '../util/getRandomString';
-
+import React from 'react';
 const LineLoginButton: React.FC = () => {
     const lineState = getRandomString();
     console.log(CONFIG);
+    console.log(process.env);
     return (
         <div>
             <button>

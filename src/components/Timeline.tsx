@@ -1,5 +1,5 @@
 import Post from "./Post";
-
+import React from 'react';
 const Timeline: React.FC = () => {
     return(
         <>

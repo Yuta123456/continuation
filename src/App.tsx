@@ -9,6 +9,7 @@ import {
   IonTabs,
   setupIonicReact
 } from '@ionic/react';
+import React from 'react';
 import { IonReactRouter } from '@ionic/react-router';
 import { home, statsChart} from 'ionicons/icons';
 import Home from './pages/Home';

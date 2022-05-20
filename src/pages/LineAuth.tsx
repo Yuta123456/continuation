@@ -1,5 +1,6 @@
 import { env } from "process";
 import { useEffect } from "react";
+import React from 'react';
 import { useLocation } from "react-router-dom";
 import CONFIG from "../const/config";
 
