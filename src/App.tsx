@@ -14,7 +14,6 @@ import { IonReactRouter } from '@ionic/react-router';
 import { home, statsChart} from 'ionicons/icons';
 import Home from './pages/Home';
 import Stats from './pages/Stats';
-import Tab3 from './pages/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -53,7 +52,7 @@ const App: React.FC = () => (
             <LineAuth />
           </Route>
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to="/home" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
