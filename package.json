@@ -21,6 +21,7 @@
     "@types/react-router-dom": "^5.1.7",
     "dotenv": "^16.0.1",
     "ionicons": "^5.4.0",
+    "query-string": "^7.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-github-contribution-calendar": "^2.1.1",
