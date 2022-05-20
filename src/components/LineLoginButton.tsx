@@ -4,12 +4,13 @@ import getRandomString from '../util/getRandomString';
 import React from 'react';
 const LineLoginButton: React.FC = () => {
     const lineState = getRandomString();
-    console.log(CONFIG);
-    console.log(process.env);
+    const productionUrl = "https%3A%2F%2Fp5btwrqmma.appflowapp.com%2Fauth";
+    const localUrl = "http%3A%2F%2Flocalhost%3A8100%2Fauth";
+    console.log(lineState);
     return (
         <div>
             <button>
-                <a href={"https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id="+ CONFIG["CHANNEL_ID"]+"&redirect_uri=https%3A%2F%2Fp5btwrqmma.appflowapp.com%2Fauth&state="+lineState+"scope=profile%20openid"}>
+                <a href={"https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id="+ CONFIG["CHANNEL_ID"]+"&redirect_uri=" + localUrl + "&state="+lineState+"&scope=profile%20openid"}>
                 <img src={imgSrc}/>
                 </a>
             </button>
