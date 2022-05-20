@@ -1,6 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import Pixela from '../components/Pixela';
+import ContributionCalender from '../components/ContributionCalender';
 const Tab2: React.FC = () => {
   return (
     <IonPage>
@@ -15,7 +16,8 @@ const Tab2: React.FC = () => {
             <IonTitle size="large">Tab 2</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Pixela/>
+        {/* <Pixela/> */}
+        <ContributionCalender/>
       </IonContent>
     </IonPage>
   );
