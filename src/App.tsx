@@ -33,6 +33,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import LineAuth from './pages/LineAuth';
 
 setupIonicReact();
 
@@ -47,8 +48,8 @@ const App: React.FC = () => (
           <Route exact path="/stats">
             <Stats />
           </Route>
-          <Route path="/tab3">
-            <Tab3 />
+          <Route path="/auth">
+            <LineAuth />
           </Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
