@@ -52,7 +52,9 @@ const App: React.FC = () => {
               </userInfoContext.Provider>
             </Route>
             <Route exact path="/stats">
-              <Stats />
+              <userInfoContext.Provider value={ctx}>
+                <Stats />
+              </userInfoContext.Provider>
             </Route>
             <Route path="/auth">
               <userInfoContext.Provider value={ctx}>
