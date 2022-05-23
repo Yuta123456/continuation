@@ -34,40 +34,49 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import LineAuth from './pages/LineAuth';
+import { defaultContext, userInfoContext, UserInfoContext, useUserInfo } from './userHooks';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/stats">
-            <Stats />
-          </Route>
-          <Route path="/auth">
-            <LineAuth />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
-            <IonIcon icon={home} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="stats" href="/stats">
-            <IonIcon icon={statsChart}/>
-            <IonLabel>Stats</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+
+const App: React.FC = () => {
+  const ctx = useUserInfo();
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/home">
+              <userInfoContext.Provider value={ctx}>
+                <Home />
+              </userInfoContext.Provider>
+            </Route>
+            <Route exact path="/stats">
+              <Stats />
+            </Route>
+            <Route path="/auth">
+              <userInfoContext.Provider value={ctx}>
+                <LineAuth />
+              </userInfoContext.Provider>
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="home" href="/home">
+              <IonIcon icon={home} />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="stats" href="/stats">
+              <IonIcon icon={statsChart}/>
+              <IonLabel>Stats</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+}
 
 export default App;
