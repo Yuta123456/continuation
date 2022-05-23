@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import React from 'react';
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import CONFIG from '../const/config';
 import queryString from 'query-string';
 import { userInfoContext } from "../userHooks";
@@ -9,6 +9,7 @@ const LineAuth: React.FC = () => {
     const search = useLocation().search;
     const params = queryString.parse(search);
     const ctx = useContext(userInfoContext);
+    const history = useHistory();
     useEffect(() => {
         const error = params['error'];
         console.log(params);
@@ -33,7 +34,6 @@ const LineAuth: React.FC = () => {
         })
         .then(async (accessToken) => {
             // curl -v -X GET https://api.line.me/v2/profile \ -H 'Authorization: Bearer {access token}'
-            // これ、どうやって書くのが正しいんだろ
             const userInfo = await fetch('https://api.line.me/v2/profile', {
                 headers: {
                     'Authorization': 'Bearer ' + accessToken,
@@ -42,10 +42,11 @@ const LineAuth: React.FC = () => {
             .then((res) => ctx.setUserInfo(res));
             // TODO: useContent等でユーザ情報を取得
             console.log(userInfo);
+            history.push("/home");
         }).catch((e) => {console.log(e);});
     },[]);
     return(
-        <div>認証画面</div>
+        <></>
     );
 }
 
