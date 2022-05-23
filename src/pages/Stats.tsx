@@ -12,12 +12,6 @@ const Tab2: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 2</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        {/* <Pixela/> */}
         <ContributionCalender/>
       </IonContent>
     </IonPage>
