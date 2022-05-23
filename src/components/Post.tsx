@@ -8,9 +8,10 @@ type PostProps = {
 }
 const Post: React.VFC<PostProps> = (props) => {
   const ctx = useContext(userInfoContext);
+  const imgUrl = ctx.userInfo?.pictureUrl || imgSrc;
   return (
     <IonItem id={props.post_id}>
-      <IonAvatar><img src={ctx.userInfo?.pictureUrl} alt="avatar"/></IonAvatar>
+      <IonAvatar><img src={imgUrl} alt="avatar"/></IonAvatar>
       <IonLabel>
         <h2>Finn</h2>
         <h3>I'm a big deal</h3>
