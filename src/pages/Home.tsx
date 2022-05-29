@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import LineLoginButton from '../components/LineLoginButton';
 import Timeline from '../components/Timeline';
 import React from 'react';
@@ -9,7 +9,9 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle size="large">TimeLine</IonTitle>
+            <IonTitle>TimeLine</IonTitle>
+            
+            <IonButtons slot='end'><LineLoginButton/></IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
