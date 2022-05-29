@@ -8,10 +8,11 @@ import redirect_uri from "../const/url";
 const LineAuth: React.FC = () => {
     // // https://p5btwrqmma.appflowapp.com/auth?code=hCoPlzHPvkrlmWF99y0A&state=TuXObFgIXfHRLAoB
     const search = useLocation().search;
-    const params = queryString.parse(search);
-    const ctx = useContext(userInfoContext);
     const history = useHistory();
+    const ctx = useContext(userInfoContext);
+    
     useEffect(() => {
+        const params = queryString.parse(search);
         const error = params['error'];
         if (error === null) {
             // TODO: 絶対もっといろいろやらないとまずい
@@ -44,6 +45,7 @@ const LineAuth: React.FC = () => {
             // TODO: useContent等でユーザ情報を取得
             history.push("/home");
         }).catch((e) => {console.log(e);});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return(
         <></>
