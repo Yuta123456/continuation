@@ -13,8 +13,7 @@ const Post: React.VFC<PostProps> = (props) => {
     <IonItem id={props.post_id}>
       <IonAvatar><img src={imgUrl} alt="avatar"/></IonAvatar>
       <IonLabel>
-        <h2>Finn</h2>
-        <h3>I'm a big deal</h3>
+        <h2>{ctx.userInfo?.displayName}</h2>
         <p>Listen, I've had a pretty messed up day...</p>
       </IonLabel>
     </IonItem>

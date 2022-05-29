@@ -12,7 +12,6 @@ const LineAuth: React.FC = () => {
     const history = useHistory();
     useEffect(() => {
         const error = params['error'];
-        console.log(params);
         if (error === null) {
             // TODO: 絶対もっといろいろやらないとまずい
             window.alert('認証が許可されなかったため、このアプリを使用できません');
@@ -39,9 +38,9 @@ const LineAuth: React.FC = () => {
                     'Authorization': 'Bearer ' + accessToken,
                 }
             }).then((res) => res.json())
-            .then((res) => ctx.setUserInfo(res));
+            .then((res) => {ctx.setUserInfo(res)});
             // TODO: useContent等でユーザ情報を取得
-            console.log(userInfo);
+            console.log(userInfo);      
             history.push("/home");
         }).catch((e) => {console.log(e);});
     },[]);
