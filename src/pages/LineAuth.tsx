@@ -35,7 +35,7 @@ const LineAuth: React.FC = () => {
         })
         .then(async (accessToken) => {
             // curl -v -X GET https://api.line.me/v2/profile \ -H 'Authorization: Bearer {access token}'
-            const userInfo = await fetch('https://api.line.me/v2/profile', {
+            fetch('https://api.line.me/v2/profile', {
                 headers: {
                     'Authorization': 'Bearer ' + accessToken,
                 }
