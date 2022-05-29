@@ -35,6 +35,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import LineAuth from './pages/LineAuth';
 import { defaultContext, userInfoContext, UserInfoContext, useUserInfo } from './userHooks';
+import Login from './pages/Login';
 
 setupIonicReact();
 
@@ -61,6 +62,12 @@ const App: React.FC = () => {
                 <LineAuth />
               </userInfoContext.Provider>
             </Route>
+            {/* ログイン情報が無いときはログインさせたいんだけど */}
+            {/* タブが出てきてしまう */}
+            {/* {(ctx.userInfo === undefined) &&
+            <Route exact path="/">
+                <Login></Login>
+            </Route>} */}
             <Route exact path="/">
               <Redirect to="/home" />
             </Route>
