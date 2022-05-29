@@ -18,7 +18,7 @@ const LineAuth: React.FC = () => {
             return;
         }
         const code = params['code'];
-        const state = params['state'];
+        // const state = params['state'];
         // TODO: stateの一致チェック
 
         fetch('https://api.line.me/v2/oauth/accessToken', {
@@ -43,7 +43,7 @@ const LineAuth: React.FC = () => {
             console.log(userInfo);      
             history.push("/home");
         }).catch((e) => {console.log(e);});
-    },[]);
+    },[ctx, history, params]);
     return(
         <></>
     );
