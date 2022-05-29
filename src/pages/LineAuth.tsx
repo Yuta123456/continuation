@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import CONFIG from '../const/config';
 import queryString from 'query-string';
 import { userInfoContext } from "../userHooks";
+import redirect_uri from "../const/url";
 const LineAuth: React.FC = () => {
     // // https://p5btwrqmma.appflowapp.com/auth?code=hCoPlzHPvkrlmWF99y0A&state=TuXObFgIXfHRLAoB
     const search = useLocation().search;
@@ -26,9 +27,10 @@ const LineAuth: React.FC = () => {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: 'grant_type=authorization_code&code=' + code + '&client_id=' + CONFIG["CHANNEL_ID"]+'&client_secret=' + CONFIG["CHANNEL_SECRET"] + '&redirect_uri=http%3A%2F%2Flocalhost%3A8100%2Fauth'
+            body: 'grant_type=authorization_code&code=' + code + '&client_id=' + CONFIG["CHANNEL_ID"]+'&client_secret=' + CONFIG["CHANNEL_SECRET"] + '&redirect_uri=' + redirect_uri
         }).then(async (res) => {
             const resJson = await res.json();
+            console.log(resJson);
             return resJson['access_token'];
         })
         .then(async (accessToken) => {
@@ -41,9 +43,8 @@ const LineAuth: React.FC = () => {
             .then((res) => {ctx.setUserInfo(res)});
             // TODO: useContent等でユーザ情報を取得
             history.push("/home");
-            console.log(userInfo);
         }).catch((e) => {console.log(e);});
-    }, [ctx, history, params]);
+    }, []);
     return(
         <></>
     );
