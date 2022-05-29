@@ -34,8 +34,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import LineAuth from './pages/LineAuth';
-import { defaultContext, userInfoContext, UserInfoContext, useUserInfo } from './userHooks';
-import Login from './pages/Login';
+import {userInfoContext, useUserInfo } from './userHooks';
 
 setupIonicReact();
 

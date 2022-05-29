@@ -1,24 +1,12 @@
 import 'firebase/database';
-import { child, get, getDatabase, onValue, ref } from "firebase/database";
-import { key } from 'ionicons/icons';
-import { firebaseApp } from "../const/firebase";
 export const fetchData:(userId: string | undefined) => Promise<ContributionData | null> = async (userId: string | undefined) => {
     if (!userId) {
         return null
     }
-    // console.log(firebaseApp)
-    const dbRef = ref(getDatabase(firebaseApp));
-
     // データ取得
-    const userData = await get(child(dbRef, 'users/' + userId + '/continuetion')).then((snapshot) => {
-        if (snapshot.exists()) {
-          return snapshot.val();
-        } else {
-          return null;
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
+    const userData = await fetch("http://127.0.0.1:5000/userdata?userId="+userId)
+    .then((res) => res.json());
+    console.log(userData);
     const formatUserData = convertDate(userData);
     console.log(formatUserData);
     return formatUserData as ContributionData;

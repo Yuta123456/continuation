@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import Calendar from 'react-github-contribution-calendar';
 import { userInfoContext } from '../userHooks';
 import { formatDate } from '../util/dateFomatter';
@@ -30,7 +29,6 @@ const ContributionCalender: React.FC = () => {
     const _fetch = async () => {
       // console.log();
       const newData = await fetchData(ctx.userInfo?.userId);
-      console.log(newData);
       if (newData !== null) {
         setContinuationData(newData);
       }
