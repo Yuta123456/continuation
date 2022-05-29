@@ -41,8 +41,9 @@ const LineAuth: React.FC = () => {
             .then((res) => {ctx.setUserInfo(res)});
             // TODO: useContent等でユーザ情報を取得
             history.push("/home");
+            console.log(userInfo);
         }).catch((e) => {console.log(e);});
-    }, []);
+    }, [ctx, history, params]);
     return(
         <></>
     );
