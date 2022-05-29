@@ -6,11 +6,11 @@ const LineLoginButton: React.FC = () => {
     const lineState = getRandomString();
     // const productionUrl = "https%3A%2F%2Fp5btwrqmma.appflowapp.com%2Fauth";
     const localUrl = "http%3A%2F%2Flocalhost%3A8100%2Fauth";
-    console.log();
+    console.log("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=" + CONFIG["CHANNEL_ID"]+"&redirect_uri=" + localUrl + "&state=" + lineState + "&scope=profile%20openid");
     return (
         <div>
             <button>
-                <a href={"https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id="+ CONFIG["CHANNEL_ID"]+"&redirect_uri=" + localUrl + "&state="+lineState+"&scope=profile%20openid"}>
+                <a href={"https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=" + CONFIG["CHANNEL_ID"]+"&redirect_uri=" + localUrl + "&state=" + lineState + "&scope=profile%20openid"}>
                 <img src={imgSrc} alt="icon"/>
                 </a>
             </button>
@@ -19,4 +19,3 @@ const LineLoginButton: React.FC = () => {
 }
 
 export default LineLoginButton;
-

@@ -10,7 +10,6 @@ const Tab1: React.FC = () => {
       <IonHeader>
         <IonToolbar>
             <IonTitle>TimeLine</IonTitle>
-            
             <IonButtons slot='end'><LineLoginButton/></IonButtons>
         </IonToolbar>
       </IonHeader>

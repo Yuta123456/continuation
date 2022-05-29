@@ -1,6 +1,6 @@
 const CONFIG = {
-    CHANNEL_ID: process.env.CHANNEL_ID,
-    CHANNEL_SECRET:process.env.CHANNEL_SECRET
+    CHANNEL_ID: process.env.REACT_APP_CHANNEL_ID,
+    CHANNEL_SECRET:process.env.REACT_APP_CHANNEL_SECRET
 }
-console.log(process.env);
+
 export default CONFIG;
