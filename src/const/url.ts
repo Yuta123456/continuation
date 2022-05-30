@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "development") {
 export let api_url: string;
 
 if (process.env.NODE_ENV === "development") {
-    redirect_uri = "http://127.0.0.1:5000";
+    api_url = "http://127.0.0.1:5000";
 } else {
-    redirect_uri = "https://continuation-app.herokuapp.com";
+    api_url = "https://continuation-app.herokuapp.com";
 }
