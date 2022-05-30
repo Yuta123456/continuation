@@ -1,10 +1,11 @@
 import 'firebase/database';
+import { api_url } from '../const/url';
 export const fetchData:(userId: string | undefined) => Promise<ContributionData | null> = async (userId: string | undefined) => {
     if (!userId) {
         return null
     }
     // データ取得
-    const userData = await fetch("http://127.0.0.1:5000/userdata?userId="+userId)
+    const userData = await fetch(api_url + "/userdata?userId="+userId)
     .then((res) => res.json());
     console.log(userData);
     const formatUserData = convertDate(userData);

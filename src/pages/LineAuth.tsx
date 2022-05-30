@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import CONFIG from '../const/config';
 import queryString from 'query-string';
 import { userInfoContext } from "../userHooks";
-import redirect_uri from "../const/url";
+import { redirect_uri } from "../const/url";
 const LineAuth: React.FC = () => {
     // // https://p5btwrqmma.appflowapp.com/auth?code=hCoPlzHPvkrlmWF99y0A&state=TuXObFgIXfHRLAoB
     const search = useLocation().search;
@@ -13,7 +13,9 @@ const LineAuth: React.FC = () => {
     
     useEffect(() => {
         const params = queryString.parse(search);
+        console.log(params);
         const error = params['error'];
+        console.log(error);
         if (error === null) {
             // TODO: 絶対もっといろいろやらないとまずい
             window.alert('認証が許可されなかったため、このアプリを使用できません');
