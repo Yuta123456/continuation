@@ -13,9 +13,7 @@ const LineAuth: React.FC = () => {
     
     useEffect(() => {
         const params = queryString.parse(search);
-        console.log(params);
         const error = params['error'];
-        console.log(error);
         if (error === null) {
             // TODO: 絶対もっといろいろやらないとまずい
             window.alert('認証が許可されなかったため、このアプリを使用できません');
@@ -33,7 +31,6 @@ const LineAuth: React.FC = () => {
             body: 'grant_type=authorization_code&code=' + code + '&client_id=' + CONFIG["CHANNEL_ID"]+'&client_secret=' + CONFIG["CHANNEL_SECRET"] + '&redirect_uri=' + redirect_uri
         }).then(async (res) => {
             const resJson = await res.json();
-            console.log(resJson);
             return resJson['access_token'];
         })
         .then(async (accessToken) => {

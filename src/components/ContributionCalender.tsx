@@ -27,14 +27,12 @@ const ContributionCalender: React.FC = () => {
   // 変数名がゴミすぎる
   useEffect(() => {
     const _fetch = async () => {
-      // console.log();
       const newData = await fetchData(ctx.userInfo?.userId);
       if (newData !== null) {
         setContinuationData(newData);
       }
     }
     _fetch();
-    console.log("fetch");
   }, [ctx.userInfo]);
   return (
     <>
