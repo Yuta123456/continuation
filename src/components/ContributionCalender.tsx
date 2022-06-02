@@ -5,27 +5,22 @@ import { formatDate } from '../util/dateFomatter';
 import { ContributionData, fetchData } from '../util/fetchData';
 import Loading from './Loading';
 
+const until = formatDate(new Date(), "yyyy-MM-dd");
+const weekNames = ['', 'M', '', 'W', '', 'F', ''];
+const  monthNames= [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
+const panelColors = ["#EBEDF0", "#9BE9A8", "#40C463", "#30A14E", "#216E39"];
+const dateFormat = 'YYYY-MM-DD'
+
 
 
 const ContributionCalender: React.FC = () => {
-  // const panelColors = ["#EBEDF0", "#9BE9A8", "#40C463", "#30A14E", "#216E39"];
-  const until = formatDate(new Date(), "yyyy-MM-dd");
-  const values = {
-    "2022-05-20": 1,
-    "2022-04-21": 4,
-    "2022-04-22": 100,
-  };
-  const [continuationData, setContinuationData] = useState<ContributionData>(values); 
   const ctx = useContext(userInfoContext);
-  const weekNames = ['', 'M', '', 'W', '', 'F', ''];
-  const  monthNames= [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ];
-  const panelColors = ["#EBEDF0", "#9BE9A8", "#40C463", "#30A14E", "#216E39"];
-  const dateFormat = 'YYYY-MM-DD'
+  const [continuationData, setContinuationData] = useState<ContributionData>({}); 
   const [isLoading, setIsLoading] = useState(false);
-  // 変数名がゴミすぎる
+
   useEffect(() => {
     const _fetch = async () => {
       const newData = await fetchData(ctx.userInfo?.userId);
@@ -36,6 +31,14 @@ const ContributionCalender: React.FC = () => {
     setIsLoading(true);
     _fetch().finally(() => setIsLoading(false));
   }, [ctx.userInfo]);
+
+  if (!ctx.userInfo) {
+    return (
+      <div>
+        統計情報を確認するためにはログインが必要です
+      </div>
+    );
+  }
   return (
     <>
     {
