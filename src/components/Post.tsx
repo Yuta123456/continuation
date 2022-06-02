@@ -4,9 +4,9 @@ import React, { useContext } from 'react';
 import { userInfoContext } from "../userHooks";
 type PostProps = {
     post_id: string,
-    hey: string,
+    day: string,
 }
-const Post: React.VFC<PostProps> = (props) => {
+const Post: React.FC<PostProps> = (props) => {
   const ctx = useContext(userInfoContext);
   const imgUrl = ctx.userInfo?.pictureUrl || imgSrc;
   return (
@@ -14,7 +14,7 @@ const Post: React.VFC<PostProps> = (props) => {
       <IonAvatar><img src={imgUrl} alt="avatar"/></IonAvatar>
       <IonLabel>
         <h2>{ctx.userInfo?.displayName}</h2>
-        <p>Listen, I've had a pretty messed up day...</p>
+        <p>{props.day} 継続成功</p>
       </IonLabel>
     </IonItem>
   );
