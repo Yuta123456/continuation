@@ -3,6 +3,7 @@ import Calendar from 'react-github-contribution-calendar';
 import { userInfoContext } from '../userHooks';
 import { formatDate } from '../util/dateFomatter';
 import { ContributionData, fetchData } from '../util/fetchData';
+import Loading from './Loading';
 
 
 
@@ -23,7 +24,7 @@ const ContributionCalender: React.FC = () => {
     ];
   const panelColors = ["#EBEDF0", "#9BE9A8", "#40C463", "#30A14E", "#216E39"];
   const dateFormat = 'YYYY-MM-DD'
-  
+  const [isLoading, setIsLoading] = useState(false);
   // 変数名がゴミすぎる
   useEffect(() => {
     const _fetch = async () => {
@@ -32,21 +33,24 @@ const ContributionCalender: React.FC = () => {
         setContinuationData(newData);
       }
     }
-    _fetch();
+    setIsLoading(true);
+    _fetch().finally(() => setIsLoading(false));
   }, [ctx.userInfo]);
   return (
     <>
-      <Calendar 
-        panelColors={panelColors} 
-        panelAttributes={undefined}  
-        until={until}
-        weekNames={weekNames}
-        weekLabelAttributes={undefined}   
-        monthNames={monthNames}
-        monthLabelAttributes={undefined}
-        values={continuationData} dateFormat={dateFormat}
-        />
-    </>
+    {
+      isLoading ? <Loading isLoading={isLoading}/> : <Calendar 
+      panelColors={panelColors} 
+      panelAttributes={undefined}  
+      until={until}
+      weekNames={weekNames}
+      weekLabelAttributes={undefined}   
+      monthNames={monthNames}
+      monthLabelAttributes={undefined}
+      values={continuationData} dateFormat={dateFormat}
+      />
+    }
+    </>  
   );
 }
 
