@@ -6,7 +6,7 @@ import contData2TimeLine from "../util/contData2TimeLine";
 const Timeline: React.FC = () => {
     const ctx = useContext(userInfoContext);
     const [ContributionData, setContinuationData] = useState<ContributionData>()
-    const [isLoading, setIsLoading] = useState(false);
+    const [, setIsLoading] = useState(false);
     useEffect(() => {
         const _fetch = async () => {
             const newData = await fetchData(ctx.userInfo?.userId);
