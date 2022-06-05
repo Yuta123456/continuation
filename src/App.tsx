@@ -33,8 +33,10 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import LineAuth from './pages/LineAuth';
 import {userInfoContext, useUserInfo } from './userHooks';
+import Login from './pages/Login';
+import AppPage from './AppPage';
+import LineAuth from './pages/LineAuth';
 
 setupIonicReact();
 
@@ -44,44 +46,19 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <Route exact path="/home">
-              <userInfoContext.Provider value={ctx}>
-                <Home />
-              </userInfoContext.Provider>
-            </Route>
-            <Route exact path="/stats">
-              <userInfoContext.Provider value={ctx}>
-                <Stats />
-              </userInfoContext.Provider>
-            </Route>
-            <Route path="/auth">
-              <userInfoContext.Provider value={ctx}>
-                <LineAuth />
-              </userInfoContext.Provider>
-            </Route>
-            {/* ログイン情報が無いときはログインさせたいんだけど */}
-            {/* タブが出てきてしまう */}
-            {/* {(ctx.userInfo === undefined) &&
-            <Route exact path="/">
-                <Login></Login>
-            </Route>} */}
-            <Route exact path="/">
-              <Redirect to="/home" />
-            </Route>
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="home" href="/home">
-              <IonIcon icon={home} />
-              <IonLabel>Home</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="stats" href="/stats">
-              <IonIcon icon={statsChart}/>
-              <IonLabel>Stats</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
+        <userInfoContext.Provider value={ctx}>
+          { ctx.userInfo === undefined ? 
+            <IonRouterOutlet>
+              <Route exact path="/auth">
+                <LineAuth/>
+              </Route>
+              <Route exact path="/">
+                <Login/>
+              </Route>
+            </IonRouterOutlet>
+            : <AppPage/>
+          }
+        </userInfoContext.Provider>
       </IonReactRouter>
     </IonApp>
   );

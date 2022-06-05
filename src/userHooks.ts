@@ -25,6 +25,6 @@ export const useUserInfo: () => UserInfoContext = () => {
 
 export const defaultContext: UserInfoContext = {
     userInfo: undefined,
-    setUserInfo: () => {}, 
+    setUserInfo: () => {},
 }
 export const userInfoContext = createContext<UserInfoContext>(defaultContext);
