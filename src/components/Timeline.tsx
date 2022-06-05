@@ -4,6 +4,7 @@ import { userInfoContext } from "../userHooks";
 import { ContributionData, fetchData } from "../util/fetchData";
 import contData2TimeLine from "../util/contData2TimeLine";
 import { IonList } from "@ionic/react";
+import HelpContent from "./HelpContent";
 const Timeline: React.FC = () => {
     const ctx = useContext(userInfoContext);
     const [ContributionData, setContinuationData] = useState<ContributionData>()
@@ -20,6 +21,11 @@ const Timeline: React.FC = () => {
     }, [ctx.userInfo]);
     
     const timeLine = contData2TimeLine(ContributionData);
+
+    if (timeLine.length === 0) {
+        return (<HelpContent/>);
+    }
+
     return(
         <IonList>
             {timeLine.map((day, index) => <Post key={index} post_id={index.toString()} day={day}></Post>)}
