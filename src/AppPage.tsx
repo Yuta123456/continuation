@@ -1,15 +1,11 @@
 import { Redirect, Route } from "react-router";
-import LineAuth from "./pages/LineAuth";
-import { userInfoContext, useUserInfo } from "./userHooks";
 import {
-  IonApp,
   IonIcon,
   IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
-  setupIonicReact
 } from '@ionic/react';
 import React from 'react';
 import { home, statsChart} from 'ionicons/icons';

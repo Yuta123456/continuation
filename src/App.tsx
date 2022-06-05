@@ -1,19 +1,11 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
   setupIonicReact
 } from '@ionic/react';
 import React from 'react';
 import { IonReactRouter } from '@ionic/react-router';
-import { home, statsChart} from 'ionicons/icons';
-import Home from './pages/Home';
-import Stats from './pages/Stats';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
