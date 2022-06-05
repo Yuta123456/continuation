@@ -19,14 +19,6 @@ const Timeline: React.FC = () => {
         _fetch().finally(() => setIsLoading(false));
     }, [ctx.userInfo]);
     
-    if (!ctx.userInfo) {
-        return (
-            <div>
-                タイムラインを閲覧するためにはログインが必要です
-            </div>
-        );
-    }
-    
     const timeLine = contData2TimeLine(ContributionData);
     return(
         <IonList>

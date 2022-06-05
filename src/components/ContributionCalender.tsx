@@ -32,13 +32,6 @@ const ContributionCalender: React.FC = () => {
     _fetch().finally(() => setIsLoading(false));
   }, [ctx.userInfo]);
 
-  if (!ctx.userInfo) {
-    return (
-      <div>
-        統計情報を確認するためにはログインが必要です
-      </div>
-    );
-  }
   return (
     <>
     {
