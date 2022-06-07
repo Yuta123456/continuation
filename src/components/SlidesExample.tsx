@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonSlides, IonSlide, IonContent } from '@ionic/react';
+import { IonSlides } from '@ionic/react';
 import Slides1 from './slides/Slide1';
 import Slides2 from './slides/Slide2';
 import Slides3 from './slides/Slide3';
