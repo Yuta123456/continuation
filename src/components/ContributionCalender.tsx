@@ -34,18 +34,18 @@ const ContributionCalender: React.FC = () => {
 
   return (
     <>
-    {
-      isLoading ? <Loading isLoading={isLoading}/> : <Calendar 
-      panelColors={panelColors} 
-      panelAttributes={undefined}  
-      until={until}
-      weekNames={weekNames}
-      weekLabelAttributes={undefined}   
-      monthNames={monthNames}
-      monthLabelAttributes={undefined}
-      values={continuationData} dateFormat={dateFormat}
-      />
-    }
+      {
+        isLoading ? <Loading isLoading={isLoading}/> : <Calendar 
+        panelColors={panelColors} 
+        panelAttributes={undefined}  
+        until={until}
+        weekNames={weekNames}
+        weekLabelAttributes={undefined}   
+        monthNames={monthNames}
+        monthLabelAttributes={undefined}
+        values={continuationData} dateFormat={dateFormat}
+        />
+      }
     </>  
   );
 }
