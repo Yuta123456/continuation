@@ -7,7 +7,11 @@ import { userInfoContext } from "../userHooks";
 import { redirect_uri } from "../const/url";
 import { fetchData } from "../util/fetchData";
 import { IonLoading } from "@ionic/react";
-const LineAuth: React.FC = () => {
+
+type LineAuthProp = {
+    lineState: string,
+}
+const LineAuth: React.FC<LineAuthProp> = (props) => {
     // // https://p5btwrqmma.appflowapp.com/auth?code=hCoPlzHPvkrlmWF99y0A&state=TuXObFgIXfHRLAoB
     const search = useLocation().search;
     const history = useHistory();
@@ -24,8 +28,13 @@ const LineAuth: React.FC = () => {
                 return;
             }
             const code = params['code'];
-            // const state = params['state'];
-            // TODO: stateの一致チェック
+            const state = params['state'];
+            // ログイン時のランダム生成された文字列と違うもののため、
+            // クロスサイトスクリプティングの恐れがある？
+            if (state !== props.lineState) {
+                window.alert("違うブラウザからログインされた可能性があります。");
+                return;
+            }
 
             const accessToken = await fetch('https://api.line.me/v2/oauth/accessToken', {
                 method: 'POST',

@@ -26,9 +26,8 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import {userInfoContext, useUserInfo } from './userHooks';
-import Login from './pages/Login';
 import AppPage from './AppPage';
-import LineAuth from './pages/LineAuth';
+import LoginComponent from './components/LoginComponent';
 
 setupIonicReact();
 
@@ -40,14 +39,7 @@ const App: React.FC = () => {
       <IonReactRouter>
         <userInfoContext.Provider value={ctx}>
           { ctx.userInfo === undefined ? 
-            <IonRouterOutlet>
-              <Route exact path="/auth">
-                <LineAuth/>
-              </Route>
-              <Route exact path="/">
-                <Login/>
-              </Route>
-            </IonRouterOutlet>
+            <LoginComponent />
             : <AppPage/>
           }
         </userInfoContext.Provider>

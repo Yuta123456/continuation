@@ -2,7 +2,11 @@ import LineLoginButton from "../components/LineLoginButton";
 import React from 'react';
 import { IonContent, IonImg, IonPage, IonText} from "@ionic/react";
 import imgSrc from '../data/login.png';
-const Login: React.FC = () => {
+
+type LoginProp = {
+    lineState: string;
+}
+const Login: React.FC<LoginProp> = (props) => {
     return (
         <IonPage>
             <IonContent fullscreen class="ion-text-center">
@@ -16,7 +20,7 @@ const Login: React.FC = () => {
                 <IonText>
                     <p>このアプリを使用するにはログインが必要です。</p>
                 </IonText>
-                <LineLoginButton/>
+                <LineLoginButton lineState={props.lineState}/>
             </IonContent>
         </IonPage>
     );
