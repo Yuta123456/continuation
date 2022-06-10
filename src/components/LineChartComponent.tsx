@@ -1,17 +1,15 @@
 import { LineChart, Line, CartesianGrid, YAxis, XAxis } from 'recharts';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import contData2ChartData from '../util/contData2ChartData';
+import { userInfoContext } from '../userHooks';
 const LineChartComponent = () => {
-    const { width,  } = useWindowDimensions();
-    const data = [{name: "1", pv: 100}, 
-        {name: "2", pv: 130},
-        {name: "3", pv: 180},
-        {name: "4", pv: 200},
-        {name: "5", pv: 120},
-        {name: "6", pv: 110},
-    ];
+    const { width,  height} = useWindowDimensions();
+    const ctx = useContext(userInfoContext);
+
+    const chartData = contData2ChartData(ctx.userInfo?.contributionData);
 
     return (
-        <LineChart data={data} width={width * 0.85} height={width * 0.85} style={{margin: "0 auto"}}>
+        <LineChart data={chartData} width={width * 0.65} height={height * 0.65} style={{margin: "0 auto"}}>
             <XAxis dataKey="name"/>
             <YAxis/>
             <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
