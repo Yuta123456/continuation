@@ -5,7 +5,7 @@ const contData2TimeLine = (data: ContributionData|undefined) => {
     if (data === undefined) {
         return [];
     }
-    // today.setDate(today.getDate() - i)
+
     const year = [...Array(365)].map((_, index) => {
         const today = new Date();
         today.setDate(today.getDate() - index);

@@ -1,9 +1,9 @@
 import { IonContent, IonHeader, IonLabel, IonPage, IonSegment, IonSegmentButton, IonTitle, IonToolbar } from '@ionic/react';
 import React, { useState } from 'react';
+import Chart from '../components/Chart';
 // import ContributionCalender from '../components/ContributionCalender';
-import LineChartComponent from '../components/LineChartComponent';
 const Tab2: React.FC = () => {
-  const [selectSegment, setSelectSegment] = useState<string|undefined>("week");
+  const [selectSegment, setSelectSegment] = useState<string|undefined>("month");
   return (
     <IonPage>
       <IonHeader>
@@ -12,10 +12,7 @@ const Tab2: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonSegment onIonChange={e => setSelectSegment(e.detail.value)} value={selectSegment}>
-            <IonSegmentButton value="week">
-              <IonLabel>週</IonLabel>
-            </IonSegmentButton>
+        <IonSegment onIonChange={e => setSelectSegment(e.detail.value)} value={selectSegment} style={{width: "80%", margin: "20px auto"}}>
             <IonSegmentButton value="month">
               <IonLabel>月</IonLabel>
             </IonSegmentButton>
@@ -26,8 +23,7 @@ const Tab2: React.FC = () => {
               <IonLabel>すべて</IonLabel>
             </IonSegmentButton>
           </IonSegment>
-          {/* <ContributionCalender/> */}
-          <LineChartComponent/>
+          <Chart type={selectSegment}/>
       </IonContent>
     </IonPage>
   );

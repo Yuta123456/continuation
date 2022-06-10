@@ -1,25 +1,22 @@
-import { LineChart, Line, CartesianGrid, YAxis, XAxis } from 'recharts';
+import { YAxis, XAxis, BarChart, Bar } from 'recharts';
 import React, { useContext, useEffect, useState } from 'react';
-import contData2ChartData from '../util/contData2ChartData';
+import contData2YearData from '../util/contData2YearData';
 import { userInfoContext } from '../userHooks';
 const LineChartComponent = () => {
     const { width,  height} = useWindowDimensions();
     const ctx = useContext(userInfoContext);
 
-    const chartData = contData2ChartData(ctx.userInfo?.contributionData);
+    const chartData = contData2YearData(ctx.userInfo?.contributionData);
 
     return (
-        <LineChart data={chartData} width={width * 0.65} height={height * 0.65} style={{margin: "0 auto"}}>
-            <XAxis dataKey="name"/>
-            <YAxis/>
-            <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-            {/* <Line type="monotone" dataKey="uv" stroke="#8884d8" /> */}
-            <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
-        </LineChart>
+      <BarChart width={width * 0.85} height={height * 0.65} data={chartData} style={{margin: "0 auto"}}>
+        <XAxis dataKey="name"/>
+        <YAxis/>
+        <Bar dataKey="pv" fill="#8884d8" />
+      </BarChart>
     );
 }
 export const useWindowDimensions = () => {
- 
     const getWindowDimensions = () => {
       const { innerWidth: width, innerHeight: height } = window;
       return {
