@@ -21,7 +21,7 @@ const contData2YearData = (data: ContributionData|undefined) => {
         '12': 0,
     };
     // today.setDate(today.getDate() - i)
-    const year = [...Array(365)].map((_, index) => {
+    [...Array(365)].map((_, index) => {
         const today = new Date();
         today.setDate(today.getDate() - index);
         return today;

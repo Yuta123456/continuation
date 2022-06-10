@@ -13,7 +13,7 @@ const contData2MonthData = (data: ContributionData|undefined) => {
         5: 0,
     };
     
-    [...Array(4)].map((_, index) => {
+    [...Array(4)].forEach((_, index) => {
         const startDate = new Date();
         const untilDate = new Date();
         startDate.setDate(startDate.getDate() - (index + 1) * 7);
@@ -31,7 +31,6 @@ const contData2MonthData = (data: ContributionData|undefined) => {
         return {name: name.toString() + "w ago", pv};
     });
     chartData.reverse();
-    console.log(chartData, monthDataDict);
     return chartData;
 }
 

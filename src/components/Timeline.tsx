@@ -1,5 +1,5 @@
 import Post from "./Post";
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { userInfoContext } from "../userHooks";
 import contData2TimeLine from "../util/contData2TimeLine";
 import { IonList } from "@ionic/react";
