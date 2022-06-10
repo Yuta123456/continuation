@@ -27,14 +27,15 @@ const LineAuth: React.FC<LineAuthProp> = (props) => {
                 window.alert('認証が許可されなかったため、このアプリを使用できません');
                 return;
             }
-            const code = params['code'];
-            const state = params['state'];
-            // ログイン時のランダム生成された文字列と違うもののため、
-            // クロスサイトスクリプティングの恐れがある？
-            if (state !== props.lineState) {
-                window.alert("違うブラウザからログインされた可能性があります。");
-                return;
-            }
+            // const code = params['code'];
+            // const state = params['state'];
+            // // ログイン時のランダム生成された文字列と違うもののため、
+            // // クロスサイトスクリプティングの恐れがある？
+            // console.log(state, props.lineState);
+            // if (state !== props.lineState) {
+            //     window.alert("違うブラウザからログインされた可能性があります。");
+            //     return;
+            // }
 
             const accessToken = await fetch('https://api.line.me/v2/oauth/accessToken', {
                 method: 'POST',
