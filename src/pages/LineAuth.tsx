@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import React from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import CONFIG from '../const/config';
@@ -12,12 +12,9 @@ const LineAuth: React.FC = () => {
     const search = useLocation().search;
     const history = useHistory();
     const ctx = useContext(userInfoContext);
-    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        let abortCtrl = new AbortController();
         const lineLoginAndSetData = async () => {
-            setIsLoading(true);
             const params = queryString.parse(search);
             const error = params['error'];
             // これあってる？
@@ -56,27 +53,17 @@ const LineAuth: React.FC = () => {
                 contributionData,
             }
             ctx.setUserInfo(userInfo);
-            setIsLoading(false);
-            // history.push("/home");
+            history.push("/home");
         }
         lineLoginAndSetData();
-
-        return () => {
-            abortCtrl.abort()
-        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return(
-        <>
-        { isLoading ?
-            <IonLoading
-                spinner={"bubbles"}
-                isOpen={ isLoading }
-                onDidDismiss={() => setIsLoading(false)}
-                message={'loading...'}
-            /> 
-         : <></>}
-        </>
+        <IonLoading
+            spinner={"bubbles"}
+            isOpen={ true }
+            message={'loading...'}
+        /> 
     );
 }
 
