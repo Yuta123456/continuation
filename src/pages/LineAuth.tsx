@@ -27,7 +27,7 @@ const LineAuth: React.FC<LineAuthProp> = (props) => {
                 window.alert('認証が許可されなかったため、このアプリを使用できません');
                 return;
             }
-            // const code = params['code'];
+            const code = params['code'];
             // const state = params['state'];
             // // ログイン時のランダム生成された文字列と違うもののため、
             // // クロスサイトスクリプティングの恐れがある？
