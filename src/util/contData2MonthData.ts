@@ -35,7 +35,7 @@ const contData2MonthData = (data: ContributionData|undefined) => {
 }
 
 export interface MonthDataDict {
-    [month: number]: number
+    [week: number]: number
 }
 export interface ChartData {
     name: string,

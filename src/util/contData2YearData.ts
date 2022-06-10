@@ -52,6 +52,6 @@ const contData2YearData = (data: ContributionData|undefined) => {
 }
 
 export interface YearDataDict {
-    [year: string]: number
+    [month: string]: number
 }
 export default contData2YearData;
