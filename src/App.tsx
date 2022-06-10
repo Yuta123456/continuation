@@ -1,7 +1,5 @@
-import { Route } from 'react-router-dom';
 import {
   IonApp,
-  IonRouterOutlet,
   setupIonicReact
 } from '@ionic/react';
 import React from 'react';
