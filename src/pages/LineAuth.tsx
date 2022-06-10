@@ -5,6 +5,7 @@ import CONFIG from '../const/config';
 import queryString from 'query-string';
 import { userInfoContext } from "../userHooks";
 import { redirect_uri } from "../const/url";
+import { fetchData } from "../util/fetchData";
 const LineAuth: React.FC = () => {
     // // https://p5btwrqmma.appflowapp.com/auth?code=hCoPlzHPvkrlmWF99y0A&state=TuXObFgIXfHRLAoB
     const search = useLocation().search;
@@ -40,8 +41,15 @@ const LineAuth: React.FC = () => {
                     'Authorization': 'Bearer ' + accessToken,
                 }
             }).then((res) => res.json())
-            .then((res) => {ctx.setUserInfo(res)});
-            // TODO: useContent等でユーザ情報を取得
+            .then(async (res) => {
+                const userId: string = res.userId;
+                const contributionData = await fetchData(userId);
+                const userInfo = {
+                    ...res,
+                    contributionData,
+                }
+                ctx.setUserInfo(userInfo);
+            });
             history.push("/home");
         }).catch((e) => {console.log(e);});
     // eslint-disable-next-line react-hooks/exhaustive-deps

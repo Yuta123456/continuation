@@ -7,20 +7,8 @@ import { IonList } from "@ionic/react";
 import HelpContent from "./HelpContent";
 const Timeline: React.FC = () => {
     const ctx = useContext(userInfoContext);
-    const [ContributionData, setContinuationData] = useState<ContributionData>()
     const [, setIsLoading] = useState(false);
-    useEffect(() => {
-        const _fetch = async () => {
-            const newData = await fetchData(ctx.userInfo?.userId);
-            if (newData !== null) {
-                setContinuationData(newData);
-            }
-        }
-        setIsLoading(true);
-        _fetch().finally(() => setIsLoading(false));
-    }, [ctx.userInfo]);
-    
-    const timeLine = contData2TimeLine(ContributionData);
+    const timeLine = contData2TimeLine(ctx.userInfo?.contributionData);
 
     if (timeLine.length === 0) {
         return (<HelpContent/>);

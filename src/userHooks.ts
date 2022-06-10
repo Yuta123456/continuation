@@ -1,9 +1,11 @@
 import { createContext, useCallback, useState } from "react";
+import { ContributionData } from "./util/fetchData";
 
 export type UserInfo = {
     displayName: string;
     pictureUrl: string;
     userId: string;
+    contributionData: ContributionData | undefined;
 };
 
 export type UserInfoContext = {
