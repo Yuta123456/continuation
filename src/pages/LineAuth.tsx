@@ -5,7 +5,7 @@ import CONFIG from '../const/config'
 import queryString from 'query-string'
 import { userInfoContext } from '../userHooks'
 import { redirect_uri } from '../const/url'
-import { fetchData, getUserData } from '../util/fetchData'
+import { fetchData, getUserData } from '../util/apiService'
 import { IonLoading } from '@ionic/react'
 
 type LineAuthProp = {

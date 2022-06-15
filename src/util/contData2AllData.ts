@@ -1,5 +1,5 @@
 import { ChartData } from "./contData2MonthData";
-import { ContributionData } from "./fetchData";
+import { ContributionData } from "./apiService";
 
 const contData2AllData = (data: ContributionData|undefined) => {
     if (data === undefined) {

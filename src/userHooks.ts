@@ -1,5 +1,5 @@
 import { createContext, useCallback, useState } from "react";
-import { ContributionData } from "./util/fetchData";
+import { ContributionData } from "./util/apiService";
 
 export type UserInfo = {
     displayName: string;
