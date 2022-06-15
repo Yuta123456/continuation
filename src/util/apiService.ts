@@ -39,3 +39,12 @@ export interface UserDataFromBackEnd {
   contributionData: ContributionData;
   content: string;
 }
+
+export async function postSetting(userId: string, settingData: SettingData): Promise<number> {
+  return fetch(api_url + "/setting?userId="+userId).then((res) => res.status);
+}
+
+export interface SettingData {
+  content: string,
+  noticeTime: string,
+}
