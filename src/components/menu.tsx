@@ -1,6 +1,6 @@
 import React from 'react'
-import { IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonRouterOutlet } from '@ionic/react'
-import { Link, useHistory } from 'react-router-dom'
+import { IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem } from '@ionic/react'
+import { useHistory } from 'react-router-dom'
 import { menuController } from '@ionic/core/components'
 // The import for menuController must come from @ionic/core/components.
 type MenuProp = {
