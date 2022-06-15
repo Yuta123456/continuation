@@ -28,6 +28,7 @@ export const useUserInfo: () => UserInfoContext = () => {
 }
 
 export const defaultContext: UserInfoContext = {
+    // FIXME: これ、糖衣構文ある気がするわ。
     userInfo: {
         displayName:undefined,
         pictureUrl: undefined,

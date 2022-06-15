@@ -3,10 +3,11 @@ import { chevronDownOutline } from 'ionicons/icons'
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { userInfoContext } from '../userHooks'
+import { postSetting, SettingData } from '../util/apiService'
 const Setting: React.FC = () => {
   // 継続内容を取ってくる必要がある
   const ctx = useContext(userInfoContext)
-  const [content, setContent] = useState(ctx.userInfo?.content)
+  const [content, setContent] = useState(ctx.userInfo.content || '')
   const [present] = useIonPicker()
   const [noticeTime, setNoticeTime] = useState('')
   const submit = () => {
@@ -14,6 +15,19 @@ const Setting: React.FC = () => {
     userInfo.noticeTime = noticeTime
     userInfo.content = content
     ctx.setUserInfo(userInfo)
+    if (userInfo.userId === undefined) {
+      return
+    }
+    const settingData: SettingData = {
+      userId: userInfo.userId,
+      content,
+      noticeTime,
+    }
+    postSetting(settingData).then((statusCode) => {
+      if (statusCode !== 200) {
+        alert('設定が上手くいきませんでした')
+      }
+    })
   }
   return (
     <IonPage>
