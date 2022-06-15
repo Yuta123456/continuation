@@ -1,12 +1,20 @@
 import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonPicker } from '@ionic/react'
 import { chevronDownOutline } from 'ionicons/icons'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { userInfoContext } from '../userHooks'
 const Setting: React.FC = () => {
   // 継続内容を取ってくる必要がある
-  const [content, setContent] = useState('')
+  const ctx = useContext(userInfoContext)
+  const [content, setContent] = useState(ctx.userInfo?.content)
   const [present] = useIonPicker()
   const [noticeTime, setNoticeTime] = useState('')
+  const submit = () => {
+    const userInfo = ctx.userInfo
+    userInfo.noticeTime = noticeTime
+    userInfo.content = content
+    ctx.setUserInfo(userInfo)
+  }
   return (
     <IonPage>
       <IonHeader>
@@ -54,7 +62,14 @@ const Setting: React.FC = () => {
           </IonItem>
         </IonList>
         <Link to="home">
-          <IonButton>変更</IonButton>
+          {/* feedbackをする必要がある */}
+          <IonButton
+            onClick={() => {
+              submit()
+            }}
+          >
+            変更
+          </IonButton>
         </Link>
       </IonContent>
     </IonPage>
