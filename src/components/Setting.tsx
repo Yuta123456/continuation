@@ -22,7 +22,6 @@ const Setting: React.FC = () => {
                     <IonLabel>継続内容</IonLabel>
                     <IonInput value={content} placeholder="Enter Input" onIonChange={e => setContent(e.detail.value!)}></IonInput>
                 </IonItem>
-
                 <IonItem
                     onClick={
                         () => {
@@ -31,7 +30,7 @@ const Setting: React.FC = () => {
                                 present({
                                     buttons: [
                                         {
-                                            text: 'ok',
+                                            text: '設定',
                                             handler: (selected) => {
                                                 setNoticeTime(selected.time.value)
                                             },

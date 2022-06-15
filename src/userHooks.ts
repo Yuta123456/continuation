@@ -6,6 +6,7 @@ export type UserInfo = {
     pictureUrl: string;
     userId: string;
     contributionData: ContributionData | undefined;
+    content: string | undefined;
 };
 
 export type UserInfoContext = {
