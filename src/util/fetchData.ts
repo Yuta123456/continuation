@@ -1,14 +1,13 @@
 import 'firebase/database';
 import { api_url } from '../const/url';
-export const fetchData:(userId: string | undefined) => Promise<ContributionData | null> = async (userId: string | undefined) => {
+export const fetchData:(userId: string | undefined) => Promise<any> = async (userId: string | undefined) => {
     if (!userId) {
         return null
     }
     // データ取得
     const userData = await fetch(api_url + "/userdata?userId="+userId)
     .then((res) => res.json());
-    const formatUserData = convertDate(userData);
-    return formatUserData as ContributionData;
+    return userData;
 }
 const convertDate = (userData: ContributionData) => {
   const resData: ContributionData = {};
@@ -23,4 +22,20 @@ const convertDate = (userData: ContributionData) => {
 }
 export interface ContributionData {
   [date: string]: number;
+}
+
+// 型名が流石にゴミすぎる
+export async function getUserData(userId: string):Promise<UserDataFromBackEnd> {
+    const data =  await fetchData(userId);
+    const contributionData = convertDate(data["continuetion"]);
+    const content = data["contents"];
+    console.log(data);
+    return {
+      contributionData,
+      content,
+    };
+}
+export interface UserDataFromBackEnd {
+  contributionData: ContributionData;
+  content: string;
 }

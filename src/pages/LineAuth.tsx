@@ -5,7 +5,7 @@ import CONFIG from '../const/config';
 import queryString from 'query-string';
 import { userInfoContext } from "../userHooks";
 import { redirect_uri } from "../const/url";
-import { fetchData } from "../util/fetchData";
+import { fetchData, getUserData } from "../util/fetchData";
 import { IonLoading } from "@ionic/react";
 
 type LineAuthProp = {
@@ -57,12 +57,14 @@ const LineAuth: React.FC<LineAuthProp> = (props) => {
             }).then((res) => res.json());
 
             const userId: string = profileData.userId;
-            const contributionData = await fetchData(userId);
+            const userData = await getUserData(userId);
             const userInfo = {
                 ...profileData,
-                contributionData,
+                ...userData,
             }
+            console.log(userInfo);
             ctx.setUserInfo(userInfo);
+            // console.log(ctx.userInfo);
             history.push("/home");
         }
         lineLoginAndSetData();
