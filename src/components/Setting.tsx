@@ -9,7 +9,7 @@ const Setting: React.FC = () => {
   const ctx = useContext(userInfoContext)
   const [content, setContent] = useState(ctx.userInfo.content || '')
   const [present] = useIonPicker()
-  const [noticeTime, setNoticeTime] = useState('')
+  const [noticeTime, setNoticeTime] = useState(ctx.userInfo.noticeTime || '')
   const submit = () => {
     const userInfo = ctx.userInfo
     userInfo.noticeTime = noticeTime
