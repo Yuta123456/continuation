@@ -1,5 +1,5 @@
 import { formatDate } from "./dateFomatter";
-import { ContributionData } from "./fetchData";
+import { ContributionData } from "./apiService";
 
 const contData2TimeLine = (data: ContributionData|undefined) => {
     if (data === undefined) {

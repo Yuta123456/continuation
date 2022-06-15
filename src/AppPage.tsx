@@ -11,6 +11,7 @@ import React from 'react';
 import { home, statsChart} from 'ionicons/icons';
 import Home from './pages/Home';
 import Stats from './pages/Stats';
+import Setting from "./components/Setting";
 
 const AppPage = () => {
     return (
@@ -20,7 +21,10 @@ const AppPage = () => {
             <Home/>
           </Route>
           <Route exact path="/stats">
-              <Stats/>
+            <Stats/>
+          </Route>
+          <Route exact path="/setting">
+            <Setting/>
           </Route>
           <Route exact path="/">
             <Redirect to="/home" />

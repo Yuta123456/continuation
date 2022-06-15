@@ -1,15 +1,17 @@
 import { createContext, useCallback, useState } from "react";
-import { ContributionData } from "./util/fetchData";
+import { ContributionData } from "./util/apiService";
 
 export type UserInfo = {
-    displayName: string;
-    pictureUrl: string;
-    userId: string;
+    displayName: string | undefined;
+    pictureUrl: string | undefined;
+    userId: string | undefined;
     contributionData: ContributionData | undefined;
+    content: string | undefined;
+    noticeTime: string | undefined;
 };
 
 export type UserInfoContext = {
-    userInfo: undefined | UserInfo;
+    userInfo: UserInfo;
     setUserInfo: (userInfo:UserInfo) => void;
 }
 
@@ -26,7 +28,15 @@ export const useUserInfo: () => UserInfoContext = () => {
 }
 
 export const defaultContext: UserInfoContext = {
-    userInfo: undefined,
+    // FIXME: これ、糖衣構文ある気がするわ。
+    userInfo: {
+        displayName:undefined,
+        pictureUrl: undefined,
+        userId: undefined,
+        contributionData: undefined,
+        content:undefined,
+        noticeTime:undefined,
+    },
     setUserInfo: () => {},
 }
 export const userInfoContext = createContext<UserInfoContext>(defaultContext);

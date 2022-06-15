@@ -1,6 +1,6 @@
 import { ChartData } from "./contData2MonthData";
 import { formatDate } from "./dateFomatter";
-import { ContributionData } from "./fetchData";
+import { ContributionData } from "./apiService";
 
 const contData2YearData = (data: ContributionData|undefined) => {
     if (data === undefined) {
