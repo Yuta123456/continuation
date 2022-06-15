@@ -29,7 +29,6 @@ export async function getUserData(userId: string):Promise<UserDataFromBackEnd> {
     const data =  await fetchData(userId);
     const contributionData = convertDate(data["continuetion"]);
     const content = data["contents"];
-    console.log(data);
     return {
       contributionData,
       content,
@@ -40,11 +39,22 @@ export interface UserDataFromBackEnd {
   content: string;
 }
 
-export async function postSetting(userId: string, settingData: SettingData): Promise<number> {
-  return fetch(api_url + "/setting?userId="+userId).then((res) => res.status);
+export async function postSetting(settingData: SettingData): Promise<number> {
+
+  const statusCode = await fetch(api_url + "/setting",
+  {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json"
+    },
+    body: JSON.stringify(settingData),
+  }
+  ).then((res) => res.status).catch((e) => {console.log(e);return 400});
+  return statusCode
 }
 
 export interface SettingData {
+  userId: string,
   content: string,
   noticeTime: string,
 }

@@ -61,7 +61,6 @@ const LineAuth: React.FC<LineAuthProp> = (props) => {
         ...profileData,
         ...userData,
       }
-      console.log(userInfo)
       ctx.setUserInfo(userInfo)
       // console.log(ctx.userInfo);
       history.push('/home')

@@ -18,14 +18,7 @@ const Menu: React.FC<MenuProp> = (props) => {
       </IonHeader>
       <IonContent>
         <IonList>
-          <IonItem
-            button
-            onClick={() => {
-              console.log('hello')
-            }}
-          >
-            使い方
-          </IonItem>
+          <IonItem button>使い方</IonItem>
           <IonItem
             button
             onClick={() => {
