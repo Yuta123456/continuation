@@ -29,14 +29,17 @@ export async function getUserData(userId: string):Promise<UserDataFromBackEnd> {
     const data =  await fetchData(userId);
     const contributionData = convertDate(data["continuetion"]);
     const content = data["contents"];
+    const noticeTime = data["noticeTime"]
     return {
       contributionData,
       content,
+      noticeTime,
     };
 }
 export interface UserDataFromBackEnd {
   contributionData: ContributionData;
   content: string;
+  noticeTime: string;
 }
 
 export async function postSetting(settingData: SettingData): Promise<number> {
